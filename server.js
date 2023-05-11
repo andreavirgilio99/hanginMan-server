@@ -4,10 +4,9 @@ const path = require('path');
 
 //handling CORS
 app.use((req, res, next) => {
-    const allowedOrigins = ['https://hanging-8wzdtqell-andreavirgilio99.vercel.app'];
     const origin = req.headers.origin;
-    console.log(origin)
-    if (allowedOrigins.includes(origin)) {
+
+    if (origin.includes('vercel')) {
         res.header('Access-Control-Allow-Origin', origin);
     }
 
