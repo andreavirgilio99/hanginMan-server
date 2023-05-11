@@ -18,6 +18,22 @@
         {
             "src": "/",
             "dest": "client_dist/index.html"
+        },
+        {
+            "src":"/polyfills.6b2666eec982e7c4.js",
+            "dest":"client_dist/index.html"
+        },
+        {
+            "src":"/main.65388943960c602d.js",
+            "dest":"client_dist/main.65388943960c602d.js"
+        },
+        {
+            "src":"/runtime.7ae29a296d479790.js",
+            "dest":"client_dist/runtime.7ae29a296d479790.js"
+        },
+        {
+            "src":"/styles.ef46db3751d8e999.css",
+            "dest":"client_dist/styles.ef46db3751d8e999.css"
         }
     ]
 }
