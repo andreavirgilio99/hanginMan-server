@@ -28,6 +28,11 @@ app.get('*.js', function (req, res, next) {
     next();
 });
 
+app.get('*.css', function (req, res, next) {
+    res.type('text/css');
+    next();
+});
+
 app.listen(3000, () => {
     console.log('Server listening on port 3000');
 });
