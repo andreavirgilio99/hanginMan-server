@@ -2,15 +2,16 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-// handling CORS
+//handling CORS
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://hanging-man.vercel.app");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    const allowedOrigins = ['https://hanging-8wzdtqell-andreavirgilio99.vercel.app'];
+    const origin = req.headers.origin;
 
-    if(req.method == "OPTIONS"){
-        res.status(200)
+    if (allowedOrigins.includes(origin)) {
+        res.header('Access-Control-Allow-Origin', origin);
     }
-
+    
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 });
 
