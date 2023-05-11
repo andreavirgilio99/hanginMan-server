@@ -11,7 +11,7 @@ app.use((req, res, next) => {
 
 // Serve i file statici della build di Angular
 app.use(express.static(path.join(__dirname, 'client_dist')));
-
+/*
 // Gestisci tutte le altre richieste inviando la pagina HTML del frontend
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client_dist', 'index.html'));
@@ -27,7 +27,7 @@ app.get('*.js', function (req, res, next) {
     res.type('text/javascript');
     next();
 });
-
+*/
 app.get('*.css', function (req, res, next) {
     res.type('text/css');
     next();
