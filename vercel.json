@@ -21,7 +21,7 @@
         },
         {
             "src":"/polyfills.6b2666eec982e7c4.js",
-            "dest":"client_dist/index.html"
+            "dest":"client_dist/polyfills.6b2666eec982e7c4.js"
         },
         {
             "src":"/main.65388943960c602d.js",
