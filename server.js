@@ -14,10 +14,6 @@ app.use(express.static('client_dist'));
 app.get('/api/message', (req, res) => {
     res.json({ message: 'Hello GEEKS FOR GEEKS Folks from the Express server!' });
 });
-
-app.get('/', (req, res) => {
-    res.sendFile("/client_dist/index.html")
-});
   
 app.listen(3000, () => {
     console.log('Server listening on port 3000');
