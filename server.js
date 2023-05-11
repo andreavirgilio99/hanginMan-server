@@ -10,6 +10,11 @@ app.use((req, res, next) => {
   
 app.use(express.static('client_dist'));
 
+// Gestisci tutte le altre richieste inviando la pagina HTML del frontend
+app.get('*', (req, res) => {
+    res.sendFile('client_dist/index.html', { root: '.' });
+  });
+
 // route for handling requests from the Angular client
 app.get('/api/message', (req, res) => {
     res.json({ message: 'Hello GEEKS FOR GEEKS Folks from the Express server!' });
