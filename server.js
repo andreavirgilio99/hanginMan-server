@@ -1,4 +1,10 @@
-app.use(express.static('client_dist'));
+app.use(express.static('client_dist', {
+    setHeaders: (res, path) => {
+        if (path.endsWith('.js')) {
+            res.setHeader('Content-Type', 'application/javascript');
+        }
+    }
+}));
 
 // Invia l'index.html del frontend per tutte le richieste GET che non corrispondono a una delle altre route definite
 app.get('*', (req, res) => {
