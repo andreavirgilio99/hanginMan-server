@@ -1,17 +1,21 @@
 const express = require('express');
+var cors = require('cors')
+
 const app = express();
+app.use(cors())
+
 const path = require('path');
 
 //handling CORS
 app.use((req, res, next) => {
+    /*
     const origin = req.headers.origin;
 
-    if (origin.includes('vercel')) {
-        res.header('Access-Control-Allow-Origin', origin);
-    }
+    const headers = req.headers;
 
     res.header('Access-Control-Allow-Origin', origin);
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    */
     next();
 });
 
