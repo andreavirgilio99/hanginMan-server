@@ -1,42 +1,43 @@
 const express = require('express');
-var cors = require('cors')
+const cors = require('cors')
+const http = require('http')
+const socketio = require('socket.io')
 
 const app = express();
+
 app.use(cors())
 
+const server = http.createServer(app)
+
+const io = socketio(server, {
+    cors: {
+      origin: ['http://localhost:4200', 'https://hanging-man.vercel.app']
+    }
+  })
+
 const path = require('path');
-
-//handling CORS
-app.use((req, res, next) => {
-    /*
-    const origin = req.headers.origin;
-
-    const headers = req.headers;
-
-    res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    */
-    next();
-});
 
 // Serve i file statici della build di Angular
 app.use(express.static(path.join(__dirname, 'client_dist')));
 
-// Gestisci tutte le altre richieste inviando la pagina HTML del frontend
-/*app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client_dist', 'index.html'));
-});*/
-app.get('/polyfills.6b2666eec982e7c4.js', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client_dist', 'polyfills.6b2666eec982e7c4.js'));
-});
+const Scopes = {
+    GLOBAL: 'GLOBAL',
+    ROOM: 'ROOM'
+  };
 
-app.get('/runtime.7ae29a296d479790.js', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client_dist', 'runtime.7ae29a296d479790.js'));
-});
+io.on('connection', socket =>{
+    //socket.emit = send to only one, io.emit = send to everyone, socket.broadcaset.emit = send to everyone but that one connection
+    socket.emit('welcome', 'welcome to the circus')
+    socket.broadcast.emit('user-join','some clown just joined lmao')
 
-app.get('/main.65388943960c602d.js', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client_dist', 'main.65388943960c602d.js'));
-});
+    socket.on('disconnect', () =>{
+        io.emit('user-left', 'Good news fellas, some of you just fucked off hurray')
+    })
+
+    socket.on('message', message =>{
+        io.emit('message', message)
+    })
+})
 
 // route for handling requests from the Angular client
 app.get('/api/message', (req, res) => {
@@ -54,6 +55,6 @@ app.get('*.css', function (req, res, next) {
     next();
 });
 
-app.listen(3000, () => {
+server.listen(3000, () => {
     console.log('Server listening on port 3000');
 });
