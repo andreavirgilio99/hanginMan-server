@@ -46,7 +46,7 @@ io.on('connection', socket => {
 
         if (userData) {
             io.emit(userData.language + '-user-disconnected', socket.id)
-
+            console.log(userData.room)
             if (userData.room != 'none') {
                 const room = languages.get(userData.language).find(rooms => rooms.id == userData.room)
 
@@ -66,16 +66,16 @@ io.on('connection', socket => {
                         room.peers.splice(indx, 1)
                     }
 
-                    io.emit(room.id + "-user-leave", socket.id) //cambia nome
+                    io.emit(userData.language + "-user-leave", room.id, socket.id)
                 }
             }
         }
     })
 
-    socket.on('message', message => {
+    socket.on('global-message', message => {
         console.log('message received')
 
-        io.emit('message', message)
+        io.emit('global-message', message)
     })
 
     socket.on('join-country', language => {
@@ -99,6 +99,10 @@ io.on('connection', socket => {
         languages.get(language).push(room)
         users.get(socket.id).room = room.id
         io.emit(language + '-room-created', room)
+
+        socket.on(room.id + '-message', message =>{
+            io.emit(room.id + '-message', message)
+        })
     })
 
     socket.on('join-room', data => { //data = [language, roomId]
@@ -111,8 +115,11 @@ io.on('connection', socket => {
         if(room){
             room.peers.push(socket.id)
         }
-
+        users.get(socket.id).room = room.id
         socket.broadcast.emit(language + '-user-join', roomId, socket.id) //cambia tutto
+        socket.on(roomId + '-message', message =>{
+            io.emit(roomId + '-message', message)
+        })
     })
 })
 
