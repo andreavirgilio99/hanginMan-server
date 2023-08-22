@@ -21,6 +21,8 @@ const path = require('path');
 // Serve i file statici della build di Angular
 app.use(express.static(path.join(__dirname, 'client_dist')));
 
+console.log('sus')
+
 const Scopes = {
     GLOBAL: 'GLOBAL',
     ROOM: 'ROOM'
@@ -262,7 +264,7 @@ app.get('/api/checkUsername', (req, res) => {
 })
 
 app.get('/assets/*', (req, res) => {
-
+    console.log('dsdsd')
     res.sendFile(path.join(__dirname, 'client_dist', req.originalUrl));
 });
 
