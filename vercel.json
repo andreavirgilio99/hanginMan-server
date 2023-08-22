@@ -16,6 +16,10 @@
             "dest": "server.js"
         },
         {
+            "src": "/socket.io/*",
+            "dest": "server.js"
+        },
+        {
             "src": "/",
             "dest": "client_dist/index.html"
         },
