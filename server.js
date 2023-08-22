@@ -261,6 +261,25 @@ app.get('/api/checkUsername', (req, res) => {
     res.send(isUnique)
 })
 
+//Gestisci tutte le altre richieste inviando la pagina HTML del frontend
+
+/*app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client_dist', 'index.html'));
+});
+*/
+
+app.get('/polyfills.js', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client_dist', 'polyfills.js'));
+});
+
+app.get('/runtime.js', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client_dist', 'runtime.js'));
+});
+
+app.get('/main.js', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client_dist', 'main.js'));
+});
+
 // Aggiungi l'header Content-Type nelle risposte per i file JavaScript
 app.get('*.js', function (req, res, next) {
     res.type('text/javascript');

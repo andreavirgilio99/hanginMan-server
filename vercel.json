@@ -20,20 +20,20 @@
             "dest": "client_dist/index.html"
         },
         {
-            "src":"/polyfills.6b2666eec982e7c4.js",
-            "dest":"client_dist/polyfills.6b2666eec982e7c4.js"
+            "src":"/polyfills.js",
+            "dest":"client_dist/polyfills.js"
         },
         {
-            "src":"/main.fd1909fd206dd544.js",
-            "dest":"client_dist/main.fd1909fd206dd544.js"
+            "src":"/main.js",
+            "dest":"client_dist/main.js"
         },
         {
-            "src":"/runtime.7ae29a296d479790.js",
-            "dest":"client_dist/runtime.7ae29a296d479790.js"
+            "src":"/runtime.js",
+            "dest":"client_dist/runtime.js"
         },
         {
-            "src":"/styles.ef46db3751d8e999.css",
-            "dest":"client_dist/styles.ef46db3751d8e999.css"
+            "src":"/styles.css",
+            "dest":"client_dist/styles.css"
         }
     ]
 }
