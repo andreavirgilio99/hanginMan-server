@@ -12,7 +12,7 @@ const server = http.createServer(app)
 
 const io = socketio(server, {
     cors: {
-        origin: ['http://localhost:4200', 'https://hanging-man.vercel.app']
+        origin: ['http://localhost:4200', 'https://hangman-game-6m0a.onrender.com']
     }
 })
 
