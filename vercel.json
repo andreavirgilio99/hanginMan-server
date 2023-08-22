@@ -20,6 +20,10 @@
             "dest": "server.js"
         },
         {
+            "src": "/assets/*",
+            "dest": "/client_dist/assets"
+        },
+        {
             "src": "/",
             "dest": "client_dist/index.html"
         },
