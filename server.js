@@ -261,6 +261,11 @@ app.get('/api/checkUsername', (req, res) => {
     res.send(isUnique)
 })
 
+app.get('/assets/*', (req, res) => {
+
+    res.sendFile(path.join(__dirname, 'client_dist', req.originalUrl));
+});
+
 //Gestisci tutte le altre richieste inviando la pagina HTML del frontend
 
 /*app.get('*', (req, res) => {
