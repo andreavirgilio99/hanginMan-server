@@ -84,7 +84,7 @@ io.on('connection', socket => {
             }
         }
 
-        socket.removeAllListeners()
+        //socket.removeAllListeners() I'll fucking handle it later
     })
 
     socket.on('global-message', message => {
