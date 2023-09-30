@@ -11,4 +11,10 @@ async function getRandomWord(lang){
     return axios.get('https://random-word-api.herokuapp.com/word', config);
 }
 
-module.exports = {getRandomWord};
+function IDontWannaSleepPapa(){
+    setInterval(() =>{
+        axios.get('https://hangman-game-6m0a.onrender.com/')
+    }, 1000 * 180)
+}
+
+module.exports = {getRandomWord, IDontWannaSleepPapa};

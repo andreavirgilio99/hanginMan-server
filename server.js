@@ -1,5 +1,5 @@
 const express = require('express');
-const { getRandomWord } = require('./util');
+const { getRandomWord, IDontWannaSleepPapa } = require('./util');
 const cors = require('cors')
 const http = require('http')
 const socketio = require('socket.io')
@@ -39,6 +39,8 @@ const languages = new Map([ //language - roomObj[]
     ['it', []],
     ['es', []]
 ])
+
+IDontWannaSleepPapa()
 
 io.on('connection', socket => {
     console.log("user connected")
@@ -84,7 +86,7 @@ io.on('connection', socket => {
             }
         }
 
-        //socket.removeAllListeners() I'll fucking handle it later
+        socket.removeAllListeners() //I'll fucking handle it later
     })
 
     socket.on('global-message', message => {
