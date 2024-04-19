@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /client_dist/
+Disallow: /
+
+Sitemap: https://hangman-game-6m0a.onrender.com/sitemap.xml

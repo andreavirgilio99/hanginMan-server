@@ -21,11 +21,6 @@ const path = require('path');
 // Serve i file statici della build di Angular
 app.use(express.static(path.join(__dirname, 'client_dist')));
 
-const Scopes = {
-    GLOBAL: 'GLOBAL',
-    ROOM: 'ROOM'
-};
-
 const RoomStates = {
     PENDING: 'PENDING',
     ONGOING: 'ONGOING'
@@ -263,16 +258,35 @@ app.get('/api/checkUsername', (req, res) => {
     res.send(isUnique)
 })
 
+app.get('/robots.txt', (req, res) => {
+    const filePath = path.join(__dirname, 'robots.txt');
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+        console.error('Error during reading of robots.txt:', err);
+        res.status(500).send('Internal server error');
+        return;
+      }
+      res.type('text/plain');
+      res.send(data);
+    });
+});
+  
+app.get('/sitemap.xml', (req, res) => {
+    const filePath = path.join(directoryPath, 'sitemap.xml');
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+        console.error('Error during reading of sitemap.xml:', err);
+        res.status(500).send('Internal server error');
+        return;
+      }
+      res.type('application/xml');
+      res.send(data);
+    });
+});
+
 app.get('/assets/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client_dist', req.originalUrl));
 });
-
-//Gestisci tutte le altre richieste inviando la pagina HTML del frontend
-
-/*app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client_dist', 'index.html'));
-});
-*/
 
 app.get('/polyfills.js', (req, res) => {
     res.sendFile(path.join(__dirname, 'client_dist', 'polyfills.js'));
