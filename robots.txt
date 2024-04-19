@@ -6,4 +6,4 @@ Disallow: /util.js
 Disallow: /package.json
 Disallow: /package-lock.json
 
-Sitemap: https://hangman-game-6m0a.onrender.com/sitemap.xml
+Sitemap: https://hangman-game-6m0a.onrender.com/my-sitemap.xml
