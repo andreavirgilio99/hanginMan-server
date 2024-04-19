@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /client_dist/
 Allow: /sitemap.xml
-Disallow: /
+Disallow: /server.js
+Disallow: /util.js
+Disallow: /package.json
+Disallow: /package-lock.json
 
 Sitemap: https://hangman-game-6m0a.onrender.com/sitemap.xml
