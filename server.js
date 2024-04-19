@@ -273,7 +273,7 @@ app.get('/robots.txt', (req, res) => {
 });
   
 app.get('/sitemap.xml', (req, res) => {
-    const filePath = path.join(directoryPath, 'sitemap.xml');
+    const filePath = path.join(__dirname, 'sitemap.xml');
     fs.readFile(filePath, 'utf8', (err, data) => {
       if (err) {
         console.error('Error during reading of sitemap.xml:', err);
