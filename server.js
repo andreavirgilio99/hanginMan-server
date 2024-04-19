@@ -272,11 +272,11 @@ app.get('/robots.txt', (req, res) => {
     });
 });
   
-app.get('/sitemap.xml', (req, res) => {
-    const filePath = path.join(__dirname, 'sitemap.xml');
+app.get('/my-sitemap.xml', (req, res) => {
+    const filePath = path.join(__dirname, 'my-sitemap.xml');
     fs.readFile(filePath, 'utf8', (err, data) => {
       if (err) {
-        console.error('Error during reading of sitemap.xml:', err);
+        console.error('Error during reading of my-sitemap.xml:', err);
         res.status(500).send('Internal server error');
         return;
       }
