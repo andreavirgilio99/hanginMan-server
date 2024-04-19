@@ -1,6 +1,7 @@
 const express = require('express');
 const { getRandomWord, IDontWannaSleepPapa } = require('./util');
 const cors = require('cors')
+const fs = require('fs')
 const http = require('http')
 const socketio = require('socket.io')
 
